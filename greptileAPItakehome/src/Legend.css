@@ -2,7 +2,6 @@
     position: fixed;
     bottom: 20px;
     left: 20px;
-    /* z-index: 100; */
     width: 270px;
     display: flex;
     justify-content: flex-start;
@@ -23,7 +22,7 @@
   }
   
   .controls-container.open .controls-panel {
-    max-height: 500px; /* Adjust based on content */
+    max-height: 500px;
   }
   
   .controls-container.closed .controls-panel {
@@ -58,7 +57,7 @@
   }
   
   .arrow-indicator.up {
-    transform: rotate(180deg); /* Flip when open */
+    transform: rotate(180deg);
   }
   
   .controls-content {

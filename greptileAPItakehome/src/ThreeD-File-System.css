@@ -1,4 +1,3 @@
-/* GitHubRepoVisualizer.css */
 
 .modal {
     position: absolute;
@@ -42,7 +41,6 @@
     bottom: 0;
   }
   
-  /* Add to GitHubRepoVisualizer.css */
 
 .spinner {
     border: 8px solid rgba(255, 255, 255, 0.2);

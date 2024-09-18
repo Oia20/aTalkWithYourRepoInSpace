@@ -4,11 +4,14 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Text, Sparkles, Stars } from "@react-three/drei";
 import './ThreeD-File-System.css'
 
+// If running locally make sure to change these to match your repo in main.tsx. Also Make sure greptile has your repo in their database. One way to do this is through the UI in their docs. https://docs.greptile.com/api-reference/index
 interface GitHubRepoVisualizerProps {
   owner: string;
   repo: string;
 }
 
+
+//Expected response from github api
 interface GitHubContent {
   name: string;
   path: string;
@@ -22,6 +25,7 @@ interface GitHubContent {
   children?: GitHubContent[];
 }
 
+//Constants for spacing of nodes.
 const NODE_SPACING = 5;
 const LEVEL_SPACING = 4;
 
@@ -36,6 +40,8 @@ const GitHubRepoVisualizer: React.FC<GitHubRepoVisualizerProps> = ({
   const [selectedUrl, setSelectedUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [greptileMessage, setGreptileMessage] = useState<string | null>(null);
+
+  // Use Github API to fetch the repo's data.
   const fetchRepoContents = async (path: string = ""): Promise<GitHubContent[]> => {
     try {
       const result = await axios.get<GitHubContent[]>(
@@ -53,6 +59,7 @@ const GitHubRepoVisualizer: React.FC<GitHubRepoVisualizerProps> = ({
     }
   };
 
+   // Use Github API to fetch the repo's files/folders recursively.
   const fetchAllContents = async (path: string = "") => {
 
     const contents = await fetchRepoContents(path);
@@ -71,6 +78,8 @@ const GitHubRepoVisualizer: React.FC<GitHubRepoVisualizerProps> = ({
     return allContents;
   };
 
+
+  // Using the greptile API to ask how the selected file fits into the overall repo, and what exactly it does.
   const queryGreptile = async () => {
     setLoading(true);
     setGreptileMessage(null);
@@ -105,9 +114,9 @@ const GitHubRepoVisualizer: React.FC<GitHubRepoVisualizerProps> = ({
     try {
       const response = await fetch('https://api.greptile.com/v2/query', options);
       const data = await response.json();
-      setGreptileMessage(data.message); // Assuming the response has a 'message' field
+      setGreptileMessage(data.message);
     } catch (err) {
-      console.error(err);
+      setGreptileMessage("Something went wrong. please try again.");
     } finally {
       setLoading(false);
     }
@@ -128,7 +137,7 @@ const Modal = ({ url, onClose }: { url: string, onClose: () => void }) => (
   </div>
 );
 
-
+  // Fetch the repo's data on mount.
   useEffect(() => {
     const fetchRepoData = async () => {
       const contents = await fetchAllContents();
@@ -138,6 +147,7 @@ const Modal = ({ url, onClose }: { url: string, onClose: () => void }) => (
     fetchRepoData();
   }, [owner, repo]);
 
+  // Handles clicking on a node to open/close it.
   const handleNodeClick = (sha: string) => {
     setOpenDirs(prev => {
       const newSet = new Set(prev);
@@ -160,7 +170,7 @@ const Modal = ({ url, onClose }: { url: string, onClose: () => void }) => (
       ];
 
       return (
-        <React.Fragment key={item.sha}>
+        <React.Fragment key={item.sha} >
           <mesh
             position={position}
             onClick={() => item.type === "dir" && handleNodeClick(item.sha)}
@@ -177,6 +187,8 @@ const Modal = ({ url, onClose }: { url: string, onClose: () => void }) => (
             <meshStandardMaterial
               color={item.type === "dir" ? (openDirs.has(item.sha) ? "orange" : "blue") : "green"}
             />
+            <sphereGeometry args={[0.25, 16, 16]} />
+            <meshStandardMaterial color="black" />
             <Text
               position={[0, 1, 0]}
               fontSize={0.35}
@@ -196,9 +208,9 @@ const Modal = ({ url, onClose }: { url: string, onClose: () => void }) => (
   return (
     <>
       <div className="canvas">
-        <Canvas>
+        
+        <Canvas camera={{ position: [0, 0, 20], fov: 60 }}>
           <ambientLight intensity={0.5} />
-          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
           <OrbitControls />
           <Stars />
           {renderNodes(repoData)}

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Legend.css'; // For styling
+import { useState } from 'react';
+import './Legend.css';
 const Controls = () => {
     const [isOpen, setIsOpen] = useState(true);
   
@@ -12,7 +12,7 @@ const Controls = () => {
         <div className="controls-panel">
           <div className="toggle-bar" onClick={togglePanel}>
             <span className="toggle-text">Legend & Controls</span>
-            <span className={`arrow-indicator ${isOpen ? 'up' : 'down'}`}>&#9660;</span> {/* Down arrow */}
+            <span className={`arrow-indicator ${isOpen ? 'up' : 'down'}`}>&#9660;</span>
           </div>
   
           <div className="controls-content">
