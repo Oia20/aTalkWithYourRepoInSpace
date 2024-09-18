@@ -1,0 +1,138 @@
+.controls-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    /* z-index: 100; */
+    width: 270px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .controls-panel {
+    background-color: rgba(9, 13, 13, 0.766);
+    padding: 0;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    color: #f0f0f0;
+    font-size: 14px;
+    max-height: 40px;
+    overflow: hidden;
+    transition: max-height 0.6s ease-in-out;
+  }
+  
+  .controls-container.open .controls-panel {
+    max-height: 500px; /* Adjust based on content */
+  }
+  
+  .controls-container.closed .controls-panel {
+    max-height: 40px;
+  }
+  
+  .toggle-bar {
+    background-image: linear-gradient(to right, rgb(9, 13, 13), rgb(9, 13, 13));
+
+    padding: 10px 20px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .toggle-text {
+    font-size: 16px;
+    color: rgb(7, 201, 131);
+
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .arrow-indicator {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+    color: rgb(7, 201, 131);
+
+  }
+  
+  .arrow-indicator.up {
+    transform: rotate(180deg); /* Flip when open */
+  }
+  
+  .controls-content {
+    padding: 15px 20px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .controls-container.closed .controls-content {
+    opacity: 0;
+  }
+  
+  .controls-header, .legend-header {
+    font-size: 16px;
+    color: rgb(7, 201, 131);
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgb(7, 201, 131);
+    ;
+    padding-bottom: 5px;
+  }
+  
+  .controls-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+  }
+  
+  .controls-list li {
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  
+  .control-action {
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .color-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .color-legend li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .color-box {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 4px;
+  }
+  
+  .blue {
+    background-color: #007bff;
+  }
+  
+  .green {
+    background-color: #28a745;
+  }
+  
+  .yellow {
+    background-color: #f7ba21;
+  }
+  
+  .color-box:hover {
+    filter: brightness(1.2);
+    transition: filter 0.3s ease;
+  }
+  

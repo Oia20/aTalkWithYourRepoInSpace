@@ -1,0 +1,82 @@
+/* GitHubRepoVisualizer.css */
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(to right, rgb(9, 13, 13), rgb(9, 13, 13));
+    padding: 20px;
+    z-index: 10000;
+    box-shadow: rgba(7, 201, 131, 0.4) 5px 5px, rgba(7, 201, 131, 0.3) 10px 10px, rgba(7, 201, 131, 0.2) 15px 15px, rgba(7, 201, 131, 0.1) 20px 20px, rgba(7, 201, 131, 0.05) 25px 25px;
+    border-radius: 8px;
+    color: rgb(7, 201, 131);
+    max-height: 90vh;
+    overflow: scroll;
+    border: 1px solid rgb(7, 201, 131);
+  }
+  
+  .modal a {
+    color: rgb(13, 147, 115);
+  }
+  
+  .modal button {
+    margin-left: 10px;
+    background-color: rgb(7, 201, 131);
+    color: rgb(9, 13, 13);
+    transition: background-color 0.3s ease;
+  }
+
+  .modal button:hover {
+    background-color: rgb(9, 13, 13);
+    color: rgb(7, 201, 131);
+  }
+
+  
+  .canvas {
+    background: linear-gradient(70deg, #000, #000, #000);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  /* Add to GitHubRepoVisualizer.css */
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border-top: 8px solid rgb(7, 201, 131);
+    width: 45px;
+    height: 45px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+    margin-top: 10px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .modal-fade {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .greptile-message {
+    font-size: 20px;
+    color: rgb(13, 147, 115);
+
+    margin-top: 10px;
+  }
+
+  h4 {
+    font-size: 20px;
+
+  }
