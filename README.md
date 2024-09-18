@@ -11,7 +11,7 @@
 
 ### Clone the repo: `git clone https://github.com/Oia20/aTalkWithYourRepoInSpace.git`
 
-### Enter the project directory: `cd .\greptileRepoVisualizer`
+### Enter the project directory: `cd .\aTalkWithYourRepoInSpace\greptileRepoVisualizer\`
 
 ### Install Dependencies: `npm install`
 
