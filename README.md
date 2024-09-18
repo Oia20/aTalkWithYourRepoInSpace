@@ -1,4 +1,4 @@
-# <h1 align="center">🦎Hi! This is a talk with your repo in space!🦎</h1>
+# <h1 align="center">🦎Hi! This is "a talk with your repo in space!"🦎</h1>
 
  <h3>A 3D Repository Visualizer, which allows you to query greptile to learn how specific files in your repo tie into the rest of the repo.</h3>
 
